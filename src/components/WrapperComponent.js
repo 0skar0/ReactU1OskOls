@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './wrapperStyle.module.css';
 
+//Card-Component som renderar vad som passas in som children. Innehåller i princip bara en wrapper med en toggle-knapp(med ett state)
 class WrapperComponent extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,8 @@ class WrapperComponent extends Component {
       showOrHide: true,
     }
   }
+
+  //Togglar statet mellan true och false. True så visas children. False så visas ingenting.
   toggleContent = () => {
     this.setState(prevState =>({
       showOrHide: !prevState.showOrHide,
@@ -20,7 +23,9 @@ class WrapperComponent extends Component {
         <div className="card-body">
           {this.state.showOrHide ? this.props.children : null}
           <hr/>
-          <button className="btn btn-secondary" onClick={this.toggleContent}>{this.state.showOrHide ? 'Hide' : 'Show'} Content</button>
+          <button
+          className="btn btn-secondary" onClick={this.toggleContent}
+          >{this.state.showOrHide ? 'Hide' : 'Show'} Content</button>
         </div>
       </div>
     );
